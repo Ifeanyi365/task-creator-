@@ -52,26 +52,26 @@ function addTodo(todo) {
     }
 }
 
-        todoEl.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-        
-            // Check if it's a long press (more than 500ms, for example)
-            const touchDuration = 200; // milliseconds
-            const touchStartTime = new Date().getTime();
-        
-            const longPressTimer = setTimeout(() => {
-                const index = Array.from(todosUL.children).indexOf(todoEl);
-                todos.splice(index, 1);
-                todoEl.remove();
-                updateLS();
-            }, touchDuration, touchStartTime); 
-        
-            todoEl.addEventListener('touchend', () => {
-                clearTimeout(longPressTimer);
-            });
-        });
-        
-        
+todoEl.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+
+    // Check if it's a long press (more than 500ms, for example)
+    const touchDuration = 200; // milliseconds
+    const touchStartTime = new Date().getTime();
+
+    const longPressTimer = setTimeout(() => {
+        const index = Array.from(todosUL.children).indexOf(todoEl);
+        todos.splice(index, 1);
+        todoEl.remove();
+        updateLS();
+    }, touchDuration, touchStartTime);
+
+    todoEl.addEventListener('touchend', () => {
+        clearTimeout(longPressTimer);
+    });
+});
+
+
 
 
 
